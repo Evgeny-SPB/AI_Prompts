@@ -1,0 +1,1 @@
+New-Item -ItemType SymbolicLink -Path "$HOME\.claude\CLAUDE.md" -Target ".\Claude\CLAUDE.md"
