@@ -3,6 +3,7 @@
 - Never add "Co-Authored-By" lines to commit messages
 - Always push to remote after committing
 - Always run git commands from the repository root directory (not from a subdirectory) to avoid missing submodule pointer updates or other tracked files outside the working directory
+- To find the git root, run `git rev-parse --show-toplevel` — do NOT assume the current working directory is the git root
 - Before committing, check for unstaged/untracked files with git status
   - If there are junk files: either add them to .gitignore or remove them
   - Never leave junk files uncommitted or unignored
