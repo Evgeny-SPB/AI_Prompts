@@ -1,25 +1,48 @@
 {
   "permissions": {
-    "deny": [
-      "Bash(git push --force*)",
-      "Bash(git push -f*)"
-    ],
     "allow": [
       "Bash(git status*)",
+      "Bash(git -C * status*)",
       "Bash(git log*)",
+      "Bash(git -C * log*)",
       "Bash(git diff*)",
+      "Bash(git -C * diff*)",
       "Bash(git ls*)",
+      "Bash(git -C * ls*)",
       "Bash(git branch*)",
+      "Bash(git -C * branch*)",
       "Bash(git remote*)",
+      "Bash(git -C * remote*)",
       "Bash(git show*)",
+      "Bash(git -C * show*)",
       "Bash(git tag*)",
+      "Bash(git -C * tag*)",
       "Bash(git add*)",
+      "Bash(git -C * add*)",
       "Bash(git fetch*)",
+      "Bash(git -C * fetch*)",
       "Bash(git pull*)",
+      "Bash(git -C * pull*)",
       "Bash(git push*)",
+      "Bash(git -C * push*)",
       "Bash(git submodule status*)",
+      "Bash(git -C * submodule status*)",
       "Bash(git submodule update*)",
-      "Bash(git submodule foreach*)"
+      "Bash(git -C * submodule update*)",
+      "Bash(git submodule foreach*)",
+      "Bash(git -C * submodule foreach*)",
+      "Bash(git rev-parse*)",
+      "Bash(git -C * rev-parse*)",
+      "Bash(git commit*)",
+      "Bash(git -C * commit*)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git -C * push --force*)",
+      "Bash(git -C * push -f*)"
     ]
-  }
+  },
+  "model": "opus",
+  "effortLevel": "high"
 }
