@@ -31,6 +31,6 @@
       "Bash(git -C * reset*)"
     ]
   },
-  "model": "opus",
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true
 }
