@@ -2,15 +2,27 @@
   "permissions": {
     "allow": [
       "Bash(git *)",
-      "Bash(git -C *)"
+      "Bash(git -C *)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(\"C:/Program Files/Python313/python.exe\":*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(build.bat:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(wc:*)",
+      "Bash(./build.bat:*)",
+      "Bash(find:*)",
+      "Bash(cmake:*)",
+      "Bash(tr *)"
     ],
     "deny": [
       "Bash(git push --force*)",
       "Bash(git push -f*)",
       "Bash(git -C * push --force*)",
       "Bash(git -C * push -f*)",
-      "Bash(git checkout*)",
-      "Bash(git -C * checkout*)",
       "Bash(git restore*)",
       "Bash(git -C * restore*)",
       "Bash(git clean*)",
@@ -19,18 +31,16 @@
       "Bash(git -C * branch -D*)",
       "Bash(git rebase*)",
       "Bash(git -C * rebase*)",
-      "Bash(git stash drop*)",
-      "Bash(git -C * stash drop*)",
-      "Bash(git stash clear*)",
-      "Bash(git -C * stash clear*)",
       "Bash(git push --force-with-lease*)",
       "Bash(git -C * push --force-with-lease*)",
       "Bash(git rm*)",
       "Bash(git -C * rm*)",
       "Bash(git reset*)",
       "Bash(git -C * reset*)"
-    ]
+    ],
+    "defaultMode": "default"
   },
   "effortLevel": "high",
+  "autoUpdatesChannel": "stable",
   "skipDangerousModePermissionPrompt": true
 }
