@@ -20,23 +20,7 @@
     ],
     "deny": [
       "Bash(git push --force*)",
-      "Bash(git push -f*)",
-      "Bash(git -C * push --force*)",
-      "Bash(git -C * push -f*)",
-      "Bash(git restore*)",
-      "Bash(git -C * restore*)",
-      "Bash(git clean*)",
-      "Bash(git -C * clean*)",
-      "Bash(git branch -D*)",
-      "Bash(git -C * branch -D*)",
-      "Bash(git rebase*)",
-      "Bash(git -C * rebase*)",
-      "Bash(git push --force-with-lease*)",
-      "Bash(git -C * push --force-with-lease*)",
-      "Bash(git rm*)",
-      "Bash(git -C * rm*)",
-      "Bash(git reset*)",
-      "Bash(git -C * reset*)"
+      "Bash(git push -f*)"
     ],
     "defaultMode": "default"
   },
