@@ -2,9 +2,8 @@
 - Always pull first before commit
 - Never add "Co-Authored-By" lines to commit messages
 - Always push to remote after committing
-- Always run git commands from the repository root directory (not from a subdirectory) to avoid missing submodule pointer updates or other tracked files outside the working directory
-- To find the git root, run `git rev-parse --show-toplevel` — do NOT assume the current working directory is the git root
-- Use `git -C <root>` to run git commands from the root, instead of `cd <root> && git` (avoids quoting issues with auto-approve patterns)
+- Always find git root first with 'git rev-parse --show-toplevel'. Never assume that current project directory is git root.
+- Always run git commands from the repository root directory (not from a subdirectory) to avoid missing submodule pointer updates or other tracked files outside the working directory. Use `git -C <repo_root_path>` with the actual absolute path (e.g. `git -C "/c/Users/enkud/OneDrive/Desktop/Arthur"`). Do NOT use `$(git rev-parse --show-toplevel)` or any `$()` command substitution — it triggers unnecessary permission prompts.
 - Before committing, check for unstaged/untracked files with git status
   - If there are junk files: either add them to .gitignore or remove them
   - Never leave junk files uncommitted or unignored
