@@ -27,8 +27,8 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "effortLevel": "high",
-  "autoUpdatesChannel": "stable",
+  "effortLevel": "xhigh",
+  "autoUpdatesChannel": "latest",
   "voiceEnabled": false,
   "skipDangerousModePermissionPrompt": true
 }
