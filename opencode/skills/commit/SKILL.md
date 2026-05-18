@@ -150,14 +150,18 @@ are concatenated as separate paragraphs. Therefore:
   every bullet.
 
 When running `git commit` from PowerShell, build the body as one string with real
-newline characters. Do not write escaped newline text such as `\n`, `` `n ``,
-`,n`, or similar placeholders into commit-message arguments because they can be
-committed literally.
+newline characters. Plain `\n` is not a PowerShell newline escape and can be
+committed literally. PowerShell's `` `n `` escape can work, but it is easy to
+mistype or confuse with literal text, so prefer joining lines with
+`[Environment]::NewLine`.
 
 PowerShell example:
 
 ```powershell
-$body = "- Bullet detail one." + [Environment]::NewLine + "- Bullet detail two."
+$body = @(
+  "- Bullet detail one."
+  "- Bullet detail two."
+) -join [Environment]::NewLine
 git -C <root> commit -m "Short summary" -m $body
 ```
 
@@ -200,7 +204,10 @@ After all checks pass:
 git -C <root> pull --ff-only
 git -C <root> status --short --branch
 git -C <root> add .
-$body = "- Bullet detail one." + [Environment]::NewLine + "- Bullet detail two."
+$body = @(
+  "- Bullet detail one."
+  "- Bullet detail two."
+) -join [Environment]::NewLine
 git -C <root> commit -m "Short summary" -m $body
 git -C <root> log -1 --format=%B
 git -C <root> push
