@@ -9,9 +9,15 @@ Use this workflow whenever the user asks to commit changes.
 
 ## Non-negotiable rules
 
-- Always pull first before committing.
+- Always pull first before committing, and run a final `git pull --ff-only`
+  immediately before staging/committing so the local branch is known to have the
+  latest remote changes.
 - Always push to remote after committing.
 - Never add `Co-Authored-By` lines to commit messages.
+- Never put escaped newline text such as `\n`, `` `n ``, `,n`, or other
+  literal newline placeholders into commit messages.
+- Never pass each bullet as a separate `-m` argument. Git concatenates multiple
+  `-m` values as separate paragraphs, which inserts blank lines between bullets.
 - Never change git config.
 - Never use destructive git commands such as hard reset or force push unless the
   user explicitly requests and confirms them.
@@ -133,6 +139,38 @@ Use:
 
 Do not add `Co-Authored-By` lines.
 
+## Commit message command safety
+
+Git's documented behavior is: if multiple `-m` options are given, their values
+are concatenated as separate paragraphs. Therefore:
+
+- Use one `-m` for the subject.
+- Use one additional `-m` for the whole body.
+- Do not use one `-m` per bullet, because that creates a blank line between
+  every bullet.
+
+When running `git commit` from PowerShell, build the body as one string with real
+newline characters. Do not write escaped newline text such as `\n`, `` `n ``,
+`,n`, or similar placeholders into commit-message arguments because they can be
+committed literally.
+
+PowerShell example:
+
+```powershell
+$body = "- Bullet detail one." + [Environment]::NewLine + "- Bullet detail two."
+git -C <root> commit -m "Short summary" -m $body
+```
+
+After committing and before pushing, inspect the exact commit message:
+
+```bash
+git -C <root> log -1 --format=%B
+```
+
+If the message is wrong and the commit has not been pushed yet, amend it before
+pushing. If the bad commit was already pushed, ask the user before rewriting
+history.
+
 Example:
 
 ```text
@@ -158,9 +196,13 @@ Bump kt_swd_prog: helper script naming
 
 After all checks pass:
 
-```bash
+```powershell
+git -C <root> pull --ff-only
+git -C <root> status --short --branch
 git -C <root> add .
-git -C <root> commit -m "Short summary" -m "- Bullet detail one.\n- Bullet detail two."
+$body = "- Bullet detail one." + [Environment]::NewLine + "- Bullet detail two."
+git -C <root> commit -m "Short summary" -m $body
+git -C <root> log -1 --format=%B
 git -C <root> push
 git -C <root> status --short --branch
 ```
